@@ -13,7 +13,6 @@ let hauteur_puzzle = fun p ->
   |[] -> max
   |h::t -> if (fst (fst h)) > max then aux (fst (fst h)) t else aux max t
   in (aux 0 p) + 1;;
-
   hauteur_puzzle puzzle;;
 
   let largeur_puzzle = fun p ->
@@ -44,7 +43,8 @@ let puzzle_to_tab = fun p t ->
     |a::b -> t.(fst(fst a)).(snd(fst a)) <- snd a; aux b t
   in aux p t;;
 
-  puzzle_to_tab puzzle t;;
+  let tab = puzzle_to_tab puzzle t;;
 
 
-
+let solveur = fun tab ->
+  
