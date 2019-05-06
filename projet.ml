@@ -7,6 +7,7 @@ type solution = cell list list;;
 
 let puzzle = [((0,1), 2); ((1,0), 3); ((1,1), 8); ((1,2), 4); ((2,0), 3); ((2,1), 5); ((2,2), 3)];;
 
+(* Cette fonction a pour but de definir la hauteur du puzzle *)
 let hauteur_puzzle = fun p ->
   let rec aux = fun max p ->
   match p with 
@@ -15,6 +16,7 @@ let hauteur_puzzle = fun p ->
   in (aux 0 p) + 1;;
   hauteur_puzzle puzzle;;
 
+  (* Cette fonction a pour but de definir la largeur du puzzle *)
   let largeur_puzzle = fun p ->
   let rec aux = fun max p ->
   match p with 
@@ -24,6 +26,7 @@ let hauteur_puzzle = fun p ->
 
   largeur_puzzle puzzle;;
 
+  (* Cette fonction prend en parametre un puzzle et en fait un tableau 2D vide *)
   let puzzle_to_empty_tab = fun p ->
     let t = Array.make (hauteur_puzzle p) [||] in
       for i = 0 to ((hauteur_puzzle p) - 1) do
@@ -35,7 +38,8 @@ let hauteur_puzzle = fun p ->
   t;;
 
   let t = puzzle_to_empty_tab puzzle;;
-  
+
+  (* Cette fonction a pour but de transformer un puzzle en tableau 2D d'entiers *)
 let puzzle_to_tab = fun p t ->
   let rec aux = fun p t ->
     match p with 
@@ -46,5 +50,5 @@ let puzzle_to_tab = fun p t ->
   let tab = puzzle_to_tab puzzle t;;
 
 
-let solveur = fun tab ->
+let solveur = fun tab -> 
   
