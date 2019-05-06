@@ -62,12 +62,14 @@ let tab = puzzle_to_tab puzzle t;;
 		 Bridge {isVertical = true; isDoubled = false} ];
 
 	       [Island 3;  Bridge {isVertical = false; isDoubled = true} Island 5;
-	                   Bridge {isVertical = false; isDoubled = false} Island 3]];;
+                     Bridge {isVertical = false; isDoubled = false} Island 3]];;
+                     
 let resolue = fun puzzle->
   match puzzle with
   |(0,0),0->false
      if ((0,x=>5) || (y=>5,0)) then false
      else true;;
+     
 let rec pont = fun puzzle->
   match puzzle with
   |[]-> nothing
