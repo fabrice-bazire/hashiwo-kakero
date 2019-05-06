@@ -68,7 +68,7 @@ let resolue = fun puzzle->
   |(0,0),0->false
      if ((0,x=>5) || (y=>5,0)) then false
      else true;;
-let pont = fun puzzle->
+let rec pont = fun puzzle->
   match puzzle with
   |[]-> nothing
   |h::t-> if h==x then Island h
