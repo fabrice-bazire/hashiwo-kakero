@@ -4,6 +4,12 @@ type puzzle = ( coordinate * importance ) list ;;
 type bridge = { isVertical : bool ; isDoubled : bool } ;;
 type cell = | Nothing | Island of importance | Bridge of bridge ;;
 type solution = cell list list ;;
+let pont = fun puzzle->
+  
+  let bridge1 = [{isVertical = true ; isDoubled = true}] in
+  let bridge2 = {isVertical = false ; isDoubled = true} in
+   let cell = Bridge  ;;
+    
 
 let puzzle = [((0,1), 2); ((1,0), 3); ((1,1), 8); ((1,2), 4); ((2,0), 3); ((2,1), 5); ((2,2), 3)];;
 
@@ -43,7 +49,7 @@ let puzzle_to_tab = fun p t ->
     |a::b -> t.(fst(fst a)).(snd(fst a)) <- snd a; aux b t
   in aux p t;;
 
-  let tab = puzzle_to_tab puzzle t;;
+let tab = puzzle_to_tab puzzle t;;
 
 
   let solve = [[Nothing; Nothing;Island 2; Nothing; Nothing];
@@ -57,3 +63,15 @@ let puzzle_to_tab = fun p t ->
 
 	       [Island 3;  Bridge {isVertical = false; isDoubled = true} Island 5;
 	                   Bridge {isVertical = false; isDoubled = false} Island 3]];;
+let resolue = fun puzzle->
+  match puzzle with
+  |(0,0),0->false
+     if ((0,x=>5) || (y=>5,0)) then false
+     else true;;
+let pont = fun puzzle->
+  match puzzle with
+  |[]-> nothing
+  |h::t-> if h==x then Island h
+      else pont t 
+   ;;
+
